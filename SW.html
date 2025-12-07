@@ -2,56 +2,303 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>SW V1.0.0</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slirbs v1.0.0</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #6C63FF;
+            --secondary: #FF6584;
+            --accent: #43E97B;
+            --dark: #2A265F;
+            --light: #F9F9F9;
+            --green-team: #43E97B;
+            --brown-team: #A0616A;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: "Andale Mono", "Courier New", Courier, monospace;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #F5F7FA 0%, #C3CFE2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+            min-height: 100vh;
         }
-        h1 {
-            font-weight: 150;
-            display: inline-block;
-            margin-right: 10px;
 
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
-        h3 {
-            display: inline-block;
-            font-weight: 100;
-
+        .header {
+            text-align: center;
+            padding: 40px 0 20px;
+            position: relative;
         }
 
         .title {
             display: flex;
             align-items: baseline;
-            font-size: 100px;
-        }
-        p {
-             font-weight: 250;
-
-         }
-        h2 {
-
+            justify-content: center;
+            margin-bottom: 20px;
         }
 
+        h1 {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 3.5rem;
+            margin-right: 15px;
+            position: relative;
+            display: inline-block;
+        }
 
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .version {
+            font-weight: 400;
+            color: #666;
+            font-size: 1.5rem;
+        }
+
+        .welcome-message {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .welcome-message p {
+            margin: 0;
+        }
+
+        .logout-button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .logout-button:hover {
+            background-color: #5A52D5;
+            transform: translateY(-2px);
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            border-radius: 15px 0 0 15px;
+        }
+
+        .card-title {
+            color: var(--dark);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+
+        .card-content {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .setup-card::before {
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+        }
+
+        .gameplay-card::before {
+            background: linear-gradient(to bottom, var(--secondary), var(--primary));
+        }
+
+        .rules-card::before {
+            background: linear-gradient(to bottom, var(--accent), var(--secondary));
+        }
+
+        .team-colors {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            gap: 30px;
+        }
+
+        .team {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+
+        .team-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .green {
+            background-color: var(--green-team);
+        }
+
+        .brown {
+            background-color: var(--brown-team);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .version {
+                font-size: 1.2rem;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .card-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Animation for cards */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .setup-card {
+            animation-delay: 0.1s;
+        }
+
+        .gameplay-card {
+            animation-delay: 0.3s;
+        }
+
+        .rules-card {
+            animation-delay: 0.5s;
+        }
     </style>
 </head>
 <body>
-<div class="title">
-    <h1>Slirbs</h1>
-    <h3>v1.0.0</h3>
+<div class="container">
+    <header class="header">
+        <div class="title">
+            <h1>Slirbs</h1>
+            <span class="version">v1.0.0</span>
+        </div>
+
+        <div class="team-colors">
+            <div class="team">
+                <div class="team-color green"></div>
+                <span>Green Team</span>
+            </div>
+            <div class="team">
+                <div class="team-color brown"></div>
+                <span>Brown Team</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="card setup-card">
+        <h2 class="card-title">Setup</h2>
+        <div class="card-content">
+            <p>Unfold the board. Split the green team from the brown team and equally split item cards. Shuffle brown cards with the items, and green cards with the other half of the items.</p>
+            <p>Give the green team player the green deck and give the brown team player the brown deck. Put both decks faced down, and each player draws 3 cards (If there is not a Slirb card in your hand, reshuffle your hand into the deck and draw 3 other cards).</p>
+            <p>Each player gets 11 pawns and surrounds each base with the pawns. The game is ready to begin.</p>
+        </div>
+    </div>
+
+    <div class="card gameplay-card">
+        <h2 class="card-title">Gameplay</h2>
+        <div class="card-content">
+            <p>The youngest player gets the first turn. They will move up to 3 pawns 1 square in any direction to capture a square, or add 1 pawn to the board (the square where the pawn is placed must be captured).</p>
+            <p>If there is an enemy pawn in a 5-square radius, you may attack. Draw a Slirb card and take out a piece of paper to keep track of money and energy (the board will show how much you will get per attack).</p>
+            <p>Choose an attack or move for your Slirb, minus energy and/or money on the paper, and apply the effects. It is time for your opponent to do the same.</p>
+            <p>When a Slirb runs out of health, the loser discards the card (and the pawn), while the winner keeps theirs. The winner also captures all squares in the 5 square radius, besides the ones with an enemy pawn on it.</p>
+            <p>Your turn is over after the battle and you draw a card from the deck. This goes on until one of your pawns goes onto the enemy base, in which you win.</p>
+        </div>
+    </div>
+
+    <div class="card rules-card">
+        <h2 class="card-title">Special Rules</h2>
+        <div class="card-content">
+            <p><strong>Tank:</strong> The tank cannot start battles, it can only attack enemies that are currently in battle with one of your other cards. Same with artillery.</p>
+            <p><strong>Barriers:</strong> You can place up to one barrier during your turn (more with architect). Your pawns cannot be attacked behind the barrier, and the barrier cannot be broken without the battering ram item. The sniper can attack pawns behind the barrier, though.</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Slirbs v1.0.0 - The strategic board game for everyone!</p>
+    </footer>
 </div>
-<div class="setup">
-    <h2 style="text-indent: 40px;">Setup</h2>
-    <h3 style="text-indent: 40px;"> Unfold the board. Split the green team from the brown team and equally split item cards. Shuffle brown cards with the items, and green cards with the other half of the items. Give the green team player the green deck and give the brown team player the brown deck. Put both decks faced down, and each player draws 3 cards (If there is not a Slirb card in your hand, reshuffle your hand into the deck and draw 3 other cards). Each player gets 11 pawns and surrounds each base with the pawns. The game is ready to begin.</h3>
-</div>
-<div class="gameplay">
-    <h2 style="text-indent: 40px;">Gameplay</h2>
-    <h3 style="text-indent: 40px;">The youngest player gets the first turn. They will move up to 3 pawns 1 square in any direction to capture a square, or add 1 pawn to the board (the square where the pawn is placed must be captured). If there is an enemy pawn in a 5-square radius, you may attack. Draw a Slirb card and take out a piece of paper to keep track of money and energy (the board will show how much you will get per attack). Choose an attack or move for you Slirb, minus energy and/or money on the paper, and apply the effects. It is time for your opponent to do the same. When a Slirb runs out of health, the loser discards the card(and the pawn), while the winner keeps theirs. The winner also captures all squares in the 5 square radius, besides the ones with an enemy pawn on it. Your turn is over after the battle and you draw a card from the deck. This goes on until one of your pawns goes onto the enemy base, in which you win.</h3>
-</div>
-<div class="etc.">
-    <h2 style="text-indent: 40px;">Random Rules, etc.</h2>
-    <h3 style="text-indent: 40px;">The tank cannot start battles, it can only attack enemies that are currently in battle with one of your other cards. Same with artillery.</h3>
-    <h3 style="text-indent: 40px;">Barriers: You can place up to one barrier during your turn(more with architect). Your pawns cannot be attacked behind the barrier, and the barrier cannot be broken without the battering ram item. The sniper can attack pawns behind the barrier, though.</h3>
+
+<script src="index.js"></script>
 </body>
 </html>
