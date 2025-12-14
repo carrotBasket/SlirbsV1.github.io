@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slirbs v1.0.0</title>
+    <title>Slirbs v1.1.0 (Revised Rules)</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -143,11 +143,28 @@
             border-bottom: 1px solid #eee;
             position: relative;
         }
+        
+        .card-title::after {
+            content: "REVISED";
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 0.8rem;
+            color: white;
+            background-color: var(--secondary);
+            padding: 3px 8px;
+            border-radius: 5px;
+        }
 
         .card-content {
             color: #555;
             font-size: 1rem;
             line-height: 1.8;
+        }
+        
+        .card-content ul {
+            margin-bottom: 15px;
+            padding-left: 20px;
         }
 
         .setup-card::before {
@@ -251,7 +268,7 @@
     <header class="header">
         <div class="title">
             <h1>Slirbs</h1>
-            <span class="version">v1.0.0</span>
+            <span class="version">v1.1.0</span>
         </div>
 
         <div class="team-colors">
@@ -269,36 +286,52 @@
     <div class="card setup-card">
         <h2 class="card-title">Setup</h2>
         <div class="card-content">
-            <p>Unfold the board. Split the green team from the brown team and equally split item cards. Shuffle brown cards with the items, and green cards with the other half of the items.</p>
-            <p>Give the green team player the green deck and give the brown team player the brown deck. Put both decks faced down, and each player draws 3 cards (If there is not a Slirb card in your hand, reshuffle your hand into the deck and draw 3 other cards).</p>
-            <p>Each player gets 11 pawns and surrounds each base with the pawns. The game is ready to begin.</p>
+            <p><strong>Assumptions:</strong> Game uses a square grid board. "Slirb cards" define units/items and track HP.</p>
+            <ul>
+                <li>Unfold the board. Separate all Green and Brown "Slirb" unit/item cards into two distinct decks.</li>
+                <li>Give each player their team's deck faced down. Each player draws 3 cards. If you do not draw a Slirb unit card, reshuffle your hand into the deck and draw 3 new cards until one is present.</li>
+                <li>Each player receives 11 pawns. Place all 11 pawns anywhere within your designated "Base Zone" (e.g., the two back rows of the board).</li>
+                <li>Each player takes a piece of paper to track their team's resources (Start: 50 Money, 10 Energy) and the Health Points (HP) of their active Slirb units.</li>
+            </ul>
         </div>
     </div>
 
     <div class="card gameplay-card">
         <h2 class="card-title">Gameplay</h2>
         <div class="card-content">
-            <p>The youngest player gets the first turn. They will move up to 3 pawns 1 square in any direction to capture a square, or add 1 pawn to the board (the square where the pawn is placed must be captured).</p>
-            <p>If there is an enemy pawn in a 5-square radius, you may attack. Draw a Slirb card and take out a piece of paper to keep track of money and energy (the board will show how much you will get per attack).</p>
-            <p>Choose an attack or move for your Slirb, minus energy and/or money on the paper, and apply the effects. It is time for your opponent to do the same.</p>
-            <p>When a Slirb runs out of health, the loser discards the card (and the pawn), while the winner keeps theirs. The winner also captures all squares in the 5 square radius, besides the ones with an enemy pawn on it.</p>
-            <p>Your turn is over after the battle and you draw a card from the deck. This goes on until one of your pawns goes onto the enemy base, in which you win.</p>
+            <p>The youngest player gets the first turn.</p>
+            <ul>
+                <li><strong>Movement/Capture Phase:</strong> Move up to 3 different pawns 1 square (orthogonally or diagonally) in any direction to capture an empty square. Alternately, place one new pawn from your supply onto a controlled square.</li>
+                <li><strong>Attack Phase (Optional):</strong> If an enemy pawn is within 5 squares (radius) of your pawn, you may declare an attack.</li>
+                <li><strong>Battle Sequence:</strong>
+                    <ul>
+                        <li>Both players reveal the Slirb unit card associated with their battling pawn.</li>
+                        <li>Track HP on your paper. Choose an attack action listed on your Slirb card, pay the required Money/Energy, and apply the damage to the opponent's Slirb HP. Your opponent does the same (simultaneously or sequentially as agreed).</li>
+                        <li>When a Slirb runs out of health, the loser discards that card and removes the pawn from the board. The winner keeps their card/pawn active.</li>
+                    </ul>
+                </li>
+                <li><strong>Turn End:</strong> After all actions (movement/attack) are complete, draw one card from your deck. Your turn is over.</li>
+                <li><strong>Victory Condition:</strong> The first player to successfully move one of their pawns onto an opponent's "Base Zone" wins the game instantly.</li>
+            </ul>
         </div>
     </div>
 
     <div class="card rules-card">
         <h2 class="card-title">Special Rules</h2>
         <div class="card-content">
-            <p><strong>Tank:</strong> The tank cannot start battles, it can only attack enemies that are currently in battle with one of your other cards. Same with artillery.</p>
-            <p><strong>Barriers:</strong> You can place up to one barrier during your turn (more with architect). Your pawns cannot be attacked behind the barrier, and the barrier cannot be broken without the battering ram item. The sniper can attack pawns behind the barrier, though.</p>
+            <p>Specific abilities are tied to unit/item cards. Assume abilities are clearly defined on their respective cards.</p>
+            <ul>
+                <li><strong>Tank / Artillery:</strong> These units cannot initiate attacks against unengaged enemy units. They can only join existing battles initiated by other units to provide supporting fire.</li>
+                <li><strong>Barriers:</strong> Barriers are placed using specific item cards. Pawns cannot be attacked behind a barrier by most units.</li>
+                <li><strong>Battering Ram / Sniper:</strong> The Battering Ram item card is required to destroy a Barrier pawn. The Sniper unit card is the only unit that can bypass the protection of a Barrier and attack a pawn behind it.</li>
+            </ul>
         </div>
     </div>
 
     <footer class="footer">
-        <p>Slirbs v1.0.0 - The strategic board game for everyone!</p>
+        <p>Slirbs v1.1.0 - The strategic board game for everyone! (Revised with clearer rules)</p>
     </footer>
 </div>
-
 <script src="index.js"></script>
 </body>
 </html>
